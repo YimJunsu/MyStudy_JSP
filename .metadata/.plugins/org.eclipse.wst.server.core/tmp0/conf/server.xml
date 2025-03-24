@@ -162,7 +162,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="D:\Program files\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\Program files\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSP_Study" path="/JSP_Study" reloadable="true" source="org.eclipse.jst.jee.server:JSP_Study"/><Context docBase="D:\Program files\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BookStore" path="/BookStore" reloadable="true" source="org.eclipse.jst.jee.server:BookStore"/></Host>
+      <Context docBase="D:\sourcetree_link\jspstudy\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\sourcetree_link\jspstudy\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JSP_Study" path="/JSP_Study" reloadable="true" source="org.eclipse.jst.jee.server:JSP_Study"/><Context docBase="D:\sourcetree_link\jspstudy\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BookStore" path="/BookStore" reloadable="true" source="org.eclipse.jst.jee.server:BookStore"/></Host>
     </Engine>
   </Service>
 </Server>
