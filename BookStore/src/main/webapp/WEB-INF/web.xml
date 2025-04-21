@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+
+    <!-- 관리자 역할 설정 -->
     <security-role>
-        <description></description>
         <role-name>admin</role-name>
     </security-role>
-    
+
+    <!-- 보안 정책 설정 -->
     <security-constraint>
         <display-name>BookStore Security</display-name>
         <web-resource-collection>
             <web-resource-name>BookStore</web-resource-name>
-            <description></description>
             <url-pattern>/addBook.jsp</url-pattern>
             <url-pattern>/editBook.jsp</url-pattern>
         </web-resource-collection>
         
         <auth-constraint>
-            <description>권한 관리자명</description>
             <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
-    
+
+    <!-- 로그인 설정 -->
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
@@ -27,30 +28,41 @@
             <form-error-page>/member/login_failed.jsp</form-error-page>
         </form-login-config>
     </login-config>
-    
+
+    <!-- 세션 유지 시간 설정 -->
+    <session-config>
+        <session-timeout>0</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
+    </session-config>
+	<Context>
+	    <Manager pathname="" />
+	</Context>
+    <!-- 오류 페이지 설정 -->
     <error-page>
-    	<error-code>404</error-code>
-    	<location>/exceptionNoPage.jsp</location>
+        <error-code>404</error-code>
+        <location>/exceptionNoPage.jsp</location>
     </error-page>
+
+    <!-- 로그 필터 설정 -->
     <filter>
-    	<filter-name>LogFilter</filter-name>
-    	<filter-class>filter.LogFilter</filter-class>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>filter.LogFilter</filter-class>
     </filter>
     <filter-mapping>
-    	<filter-name>LogFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <filter>
-    	<filter-name>LogFileFilter</filter-name>
-    	<filter-class>filter.LogFileFilter</filter-class>
-    	<init-param>
-    		<param-name>filename</param-name>
-    		<param-value>D:\Program files\\logs\\bookstore.log</param-value>
-    	</init-param>
+        <filter-name>LogFileFilter</filter-name>
+        <filter-class>filter.LogFileFilter</filter-class>
+        <init-param>
+            <param-name>filename</param-name>
+            <param-value>D:/Program files/logs/bookstore.log</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
-    	<filter-name>LogFileFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
+        <filter-name>LogFileFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 </web-app>

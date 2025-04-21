@@ -9,7 +9,7 @@ public class MemberRepository {
     private Connection getConnection() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/yourDB", "root", "password"
+            "jdbc:mysql://localhost:3306/BookStoreJSP", "team1", "1234"
         );
     }
 

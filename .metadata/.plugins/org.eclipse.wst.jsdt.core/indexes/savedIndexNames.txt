@@ -6,6 +6,5 @@ INDEX VERSION 1.4+D:\sourcetree_link\jspstudy\.metadata\.plugins\org.eclipse.wst
 3604302400.index
 3671628315.index
 1456457392.index
-1456457392.index
 4253780269.index
 2640130763.index
