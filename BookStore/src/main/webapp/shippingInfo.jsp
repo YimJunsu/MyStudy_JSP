@@ -1,4 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%
+	// 세션정보에서 로그인 확인
+    String userId = (String) session.getAttribute("userId");
+    if (userId == null) {
+        response.sendRedirect("member/login.jsp");
+        return;
+    }
+%>
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">

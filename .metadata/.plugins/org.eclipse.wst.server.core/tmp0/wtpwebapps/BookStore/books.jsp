@@ -31,13 +31,20 @@
 	%>
         <div class="col-md-4">
             <div class="h-100 p-2">
-            	<img src="resources/images/<%=rs.getString("b_filename") %>" style="width:250; height:350" />
-                <h5><b><%=rs.getString("b_name") %></b></h5>
-                <p><%=rs.getString("b_author") %>
-                <br><%=rs.getString("b_publisher") %> | <%=rs.getString("b_unitPrice") %>원</p>
-                <p> <%= rs.getString("b_description").substring(0,60) %>
-                <p><%=rs.getString("b_unitPrice") %>원</p>
-                <a href="./book.jsp?id=<%=rs.getString("b_id") %>" class="btn btn-secondary" role="button">상세 정보 &raquo;</a>
+            	<img src="resources/images/<%=rs.getString("filename") %>" style="width:250; height:350" />
+				<h5><b><%=rs.getString("name") %></b></h5>
+				<p><%=rs.getString("author") %>
+				<br><%=rs.getString("publisher") %> | <%=rs.getInt("unit_price") %>원</p>
+				<p><%= rs.getString("description").substring(0,100) %></p>
+				<%
+				    String desc = rs.getString("description");
+				    if (desc.length() > 60) {
+				        desc = desc.substring(0, 60) + "...";
+				    }
+				%>
+				<p><%= desc %></p>
+				<p><%=rs.getInt("unit_price") %>원</p>
+				<a href="./book.jsp?id=<%=rs.getString("book_id") %>" class="btn btn-secondary" role="button">상세 정보 &raquo;</a>
             </div>
         </div>
         <%
