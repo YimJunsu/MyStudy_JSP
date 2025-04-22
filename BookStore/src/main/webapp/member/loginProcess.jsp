@@ -9,10 +9,10 @@
         MemberRepository repo = new MemberRepository();
         Member loginUser = repo.findByIdAndPassword(id, password);
         System.out.println("Debug: 로그인 결과 = " + loginUser); // 콘솔 출력
-
         if (loginUser != null) {
-        	session.setAttribute("sessionId", loginUser.getId()); // 로그인 후 세션 설정
-        	response.sendRedirect("../welcome.jsp"); // 로그인 후 리디렉션
+            session.setAttribute("sessionId", loginUser.getId());
+            session.setAttribute("role", loginUser.getRole());  // ✅ role 추가!
+            response.sendRedirect("../welcome.jsp");
         } else {
             out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); location.href='login.jsp';</script>");
         }

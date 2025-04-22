@@ -16,7 +16,7 @@
 	<div class="p-5 mb-4 bg-body-tertiary rounded-3">
 		<div class="container-fluid py-5">
 			<h1 class="display-5 fw-bold">장바구니</h1>
-			<p class="col-md-8 fs-4">Cart</p>
+			<p class="col-md-8 fs-4">주의! : 로그아웃시 항목이 사라질 수 있습니다!</p>
 		</div>
 	</div>
 	

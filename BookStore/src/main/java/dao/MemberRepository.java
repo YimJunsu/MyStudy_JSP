@@ -2,7 +2,6 @@ package dao;
 
 import dto.Member;
 import java.sql.*;
-import java.util.Optional;
 
 public class MemberRepository {
 
@@ -14,7 +13,7 @@ public class MemberRepository {
     }
 
     public void save(Member member) throws Exception {
-        String sql = "INSERT INTO member (id, password, name, email, zipcode, address1, address2) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO member (id, password, name, email, zipcode, address1, address2, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, member.getId());
             ps.setString(2, member.getPassword());
@@ -23,6 +22,7 @@ public class MemberRepository {
             ps.setString(5, member.getZipcode());
             ps.setString(6, member.getAddress1());
             ps.setString(7, member.getAddress2());
+            ps.setString(8, member.getRole());  // role을 저장
             ps.executeUpdate();
         }
     }
@@ -37,6 +37,7 @@ public class MemberRepository {
                 Member m = new Member();
                 m.setId(rs.getString("id"));
                 m.setName(rs.getString("name"));
+                m.setRole(rs.getString("role"));  // 역할도 가져오기
                 return m;
             }
             return null;

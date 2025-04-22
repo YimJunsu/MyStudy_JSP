@@ -54,8 +54,7 @@
 				<a href="#" onclick="deleteConfirm('<%=rs.getString("b_id") %>')" class="btn btn-danger" role="button">삭제 &raquo;</a>
 				<%
             	}
-				%>
-				
+				%>	
 		</div>
 	</div>
 	<% 

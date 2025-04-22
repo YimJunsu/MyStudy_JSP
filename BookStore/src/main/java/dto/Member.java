@@ -8,6 +8,7 @@ public class Member {
     private String zipcode;
     private String address1;
     private String address2;
+    private String role;  // 역할 추가
 
     // Getters / Setters
     public String getId() { return id; }
@@ -30,4 +31,8 @@ public class Member {
 
     public String getAddress2() { return address2; }
     public void setAddress2(String address2) { this.address2 = address2; }
+    
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+    
 }

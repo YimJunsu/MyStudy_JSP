@@ -52,7 +52,7 @@
     .btn-small {
       width: auto;
       padding: 10px 16px;
-      font-size: 14px;
+      font-size: 12px;
       margin-top: 4px;
       margin-left: 8px;
     }
@@ -77,7 +77,7 @@
 </head>
 <body>
   <div class="register-container">
-    <h2>회원가입</h2>
+    <h2>책속의 방에 가입하기</h2>
     <form action="registerProcess.jsp" method="post">
       <div class="form-group">
         <input type="text" name="id" placeholder="아이디" required>
@@ -93,7 +93,7 @@
       </div>
       <div class="form-group" style="display: flex; gap: 8px;">
         <input type="text" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
-        <button type="button" class="btn-small" onclick="execDaumPostcode()">주소 검색</button>
+        <button type="button" class="btn-small" onclick="execDaumPostcode()">검색</button>
       </div>
       <div class="form-group">
         <input type="text" id="address1" name="address1" placeholder="기본 주소" readonly>
