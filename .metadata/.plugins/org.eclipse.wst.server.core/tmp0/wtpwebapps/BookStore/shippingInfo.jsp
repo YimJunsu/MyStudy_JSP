@@ -1,72 +1,129 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Book"%>
+<%@ page import="dto.Member"%>
+<%@ page import="dao.MemberRepository"%>
 <%
-	// 세션정보에서 로그인 확인
+    String cartId = session.getId();
+    
+    // 로그인 확인
     String userId = (String) session.getAttribute("userId");
     if (userId == null) {
         response.sendRedirect("member/login.jsp");
         return;
     }
+    
+    // 장바구니 확인
+    ArrayList<Book> cartList = (ArrayList<Book>) session.getAttribute("cartlist");
+    if (cartList == null || cartList.isEmpty()) {
+        response.sendRedirect("cart.jsp");
+        return;
+    }
+    
+    // 회원 정보 가져오기
+	MemberRepository memberRepo = new MemberRepository();
+	Member member = memberRepo.findById(userId);
+
 %>
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById('address1').value = data.roadAddress;
+                document.getElementById('address2').focus();
+            }
+        }).open();
+    }
+    
+    function validateForm() {
+        if (!document.shipping.receiverName.value) {
+            alert("수령인 이름을 입력하세요.");
+            return false;
+        }
+        if (!document.shipping.zipcode.value) {
+            alert("우편번호를 입력하세요.");
+            return false;
+        }
+        if (!document.shipping.address1.value) {
+            alert("주소를 입력하세요.");
+            return false;
+        }
+        if (!document.shipping.phone.value) {
+            alert("연락처를 입력하세요.");
+            return false;
+        }
+        return true;
+    }
+</script>
 <title>배송 정보</title>
 </head>
 <body>
 <div class="container py-4">
-	<%@include file="menu.jsp" %>
-	
-	<div class="p-5 mb-4 bg-body-tertiary rounded-3">
-		<div class="container-fluid py-5">
-			<h1 class="display-5 fw-bold">배송 정보</h1>
-			<p class="col-md-8 fs-4">Shipping Info</p>
-		</div>
-	</div>
-	
-	<div class="row align-items-md-stretch">
-		<form action="./processShippingInfo.jsp" method="POST">
-			<input type="hidden" name="cartId" value="<%=request.getParameter("cartId")%>">
-			<div class="mb-3 row"><!-- 성명 -->
-				<label class="col-sm-2">성명</label>
-				<div>
-					<input type="text" name="name" class="form-control">	
-				</div>
-			</div>
-			<div class="mb-3 row"><!-- 배송일 -->
-				<label class="col-sm-2">배송일</label>
-				<div>
-					<input type="text" name="shippingDate" class="form-control">(yyyy/mm/dd)
-				</div>
-			</div>
-			<div class="mb-3 row"><!-- 국가명 -->
-				<label class="col-sm-2">국가명</label>
-				<div>
-					<input type="text" name="country" class="form-control">	
-				</div>
-			</div>
-			<div class="mb-3 row"><!-- 우편번호 -->
-				<label class="col-sm-2">우편번호</label>
-				<div>
-					<input type="text" name="zipCode" class="form-control">	
-				</div>
-			</div>
-			<div class="mb-3 row"><!-- 주소 -->
-				<label class="col-sm-2">주소</label>
-				<div>
-					<input type="text" name="addressName" class="form-control">	
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<div class="col-sm-offset-2 col-sm-10">
-					<a href="./cart.jsp?cartId=<%=request.getParameter("cartId")%>" class="btn btn-secondary" role="button"> 이전 </a>
-					<input type="submit" class="btn btn-primary" value="등록" />
-					<a href="./cheakOutCancelled.jsp" class="btn btn-secondary" role="button"> 취소 </a>
-				</div>
-			</div>
-		</form>	
-	</div>
-	
-	<jsp:include page="footer.jsp"></jsp:include>
+    <%@ include file="menu.jsp" %>
+    
+    <div class="p-4 mb-4 bg-body-tertiary rounded-3 text-center">
+        <h1 class="display-5 fw-bold">📦 배송 정보</h1>
+        <p class="fs-5">* 배송지 정보를 입력해주세요.</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form name="shipping" action="processShippingInfo.jsp" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="cartId" value="<%= cartId %>" />
+                
+                <div class="mb-3 row">
+                    <label for="receiverName" class="col-sm-3 col-form-label">수령인</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="receiverName" name="receiverName" value="<%= member.getName() %>">
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <label for="zipcode" class="col-sm-3 col-form-label">우편번호</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="zipcode" name="zipcode" value="<%= member.getZipcode() != null ? member.getZipcode() : "" %>" readonly>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-secondary w-100" onclick="execDaumPostcode()">우편번호 찾기</button>
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <label for="address1" class="col-sm-3 col-form-label">주소</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="address1" name="address1" value="<%= member.getAddress1() != null ? member.getAddress1() : "" %>" readonly>
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <label for="address2" class="col-sm-3 col-form-label">상세주소</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="address2" name="address2" value="<%= member.getAddress2() != null ? member.getAddress2() : "" %>">
+                    </div>
+                </div>
+                
+                <div class="mb-3 row">
+                    <label for="phone" class="col-sm-3 col-form-label">연락처</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="'-' 없이 숫자만 입력하세요">
+                        <div class="form-text">주문 및 배송 관련 연락을 위해 사용됩니다.</div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="./cart.jsp" class="btn btn-secondary"> &laquo; 장바구니로 돌아가기</a>
+                    <button type="submit" class="btn btn-primary">결제하기 &raquo;</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <jsp:include page="footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

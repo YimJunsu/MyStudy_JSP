@@ -33,10 +33,9 @@
     <session-config>
         <session-timeout>0</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
     </session-config>
-	<Context>
+    <!-- 오류 페이<Context>
 	    <Manager pathname="" />
-	</Context>
-    <!-- 오류 페이지 설정 -->
+	</Context>지 설정 -->
     <error-page>
         <error-code>404</error-code>
         <location>/exceptionNoPage.jsp</location>

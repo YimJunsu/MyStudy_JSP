@@ -1,4 +1,13 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%
+    String sessionId = (String) session.getAttribute("sessionId");
+    String role = (String) session.getAttribute("role");
+
+    if (sessionId == null || role == null || !role.equals("admin")) {
+        response.sendRedirect("/BookStore/member/login.jsp");
+        return;
+    }
+%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
@@ -11,8 +20,7 @@
 <fmt:setLocale value='<%=request.getParameter("language") %>'/>
 <fmt:bundle basename="bundle.message">
 <div class="container py-4">
-	<%@include file="menu.jsp" %>
-	
+	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="p-5 mb-4 bg-body-tertiary rounded-3">
 		<div class="container-fluid py-5">
 			<h1 class="display-5 fw-bold"><fmt:message key="title"/>도서 등록</h1>

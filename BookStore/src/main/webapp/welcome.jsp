@@ -58,13 +58,13 @@
       <div id="clock" class="fw-semibold fs-5 mb-3"></div>
 		
       <c:choose>
-        <c:when test="${empty sessionScope.sessionId}">
-          <p class="text-muted">로그인하지 않으셨습니다. 로그인 후 다양한 기능을 이용할 수 있어요 😊</p>
-        </c:when>
-        <c:otherwise>
-          <p><strong>${sessionScope.sessionId}님, 환영합니다!</strong></p>
-        </c:otherwise>
-      </c:choose>
+	    <c:when test="${empty sessionScope.userId}">
+	        <p class="text-muted">로그인하지 않으셨습니다. 로그인 후 다양한 기능을 이용할 수 있어요 😊</p>
+	    </c:when>
+	    <c:otherwise>
+	        <p><strong>${sessionScope.userId}님, 환영합니다!</strong></p>
+	    </c:otherwise>
+	</c:choose>
     </div>
    
 	<!-- 베스트셀러 섹션 -->

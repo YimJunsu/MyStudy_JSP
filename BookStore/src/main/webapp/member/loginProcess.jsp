@@ -8,10 +8,10 @@
     try {
         MemberRepository repo = new MemberRepository();
         Member loginUser = repo.findByIdAndPassword(id, password);
-        System.out.println("Debug: 로그인 결과 = " + loginUser); // 콘솔 출력
+        System.out.println("Debug: 로그인 결과 = " + loginUser);
         if (loginUser != null) {
-            session.setAttribute("sessionId", loginUser.getId());
-            session.setAttribute("role", loginUser.getRole());  // ✅ role 추가!
+            session.setAttribute("userId", loginUser.getId());  // ✅ 수정됨
+            session.setAttribute("role", loginUser.getRole());
             response.sendRedirect("../welcome.jsp");
         } else {
             out.println("<script>alert('아이디 또는 비밀번호가 틀렸습니다.'); location.href='login.jsp';</script>");
