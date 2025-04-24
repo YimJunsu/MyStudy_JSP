@@ -31,7 +31,7 @@
 
     <!-- 세션 유지 시간 설정 -->
     <session-config>
-        <session-timeout>0</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
+        <session-timeout>30</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
     </session-config>
     <!-- 오류 페이<Context>
 	    <Manager pathname="" />

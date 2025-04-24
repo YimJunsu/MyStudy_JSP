@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.books-hero {
+    background-color: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.fw-bold {
+    font-weight: 600 !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.book-count {
+    color: #6366f1;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* 카드 스타일링 */
+.book-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+}
+
+.book-image-container {
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+}
+
+.book-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.book-card:hover .book-image {
+    transform: scale(1.05);
+}
+
+.book-title {
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.author, .publisher {
+    display: inline-block;
+}
+
+.publisher {
+    color: #6366f1;
+}
+
+.book-description {
+    color: #495057;
+    font-size: 14px;
+    height: 60px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.book-price {
+    color: #6366f1;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.btn-book-detail {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-book-detail:hover {
+    background-color: #4f46e5;
+    color: white;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+    .books-hero {
+        padding: 30px;
+    }
+    
+    .book-image-container {
+        height: 250px;
+    }
+}

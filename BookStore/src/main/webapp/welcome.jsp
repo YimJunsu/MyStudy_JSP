@@ -8,55 +8,21 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>책속의 방 - 메인</title>
+  <title>지식의 방</title>
+  <link href="${pageContext.request.contextPath}/resources/css/welcome.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f3f4f6;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .main-hero {
-      background-color: white;
-      padding: 60px;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-      margin-bottom: 40px;
-    }
-
-    h1, h3 {
-      color: #333;
-    }
-
-    .welcome-box {
-      background-color: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-    }
-
-    #clock {
-      color: #6366f1;
-    }
-
-    .text-muted, .text-primary {
-      font-size: 16px;
-    }
-  </style>
 </head>
 <body>
   <div class="container py-5">
     <%@ include file="menu.jsp" %>
 
     <div class="main-hero text-center">
-      <h1 class="fw-bold">책속의 밤에 오신 것을 환영합니다!</h1>
-      <p class="fs-4 text-muted">BookMarket - 당신만의 책을 찾아보세요 📚</p>
-    </div>
-
-    <div class="welcome-box text-center">
-      <h3 class="mb-4">Welcome to Web Market!</h3>
+      <h1 class="fw-bold">지식의 방에 오신 것을 환영합니다!</h1>
+      <p class="fs-4 text-muted">당신만의 책을 찾아보세요 📚</p>
+	  <br/>
+      <h3 class="mb-4">Welcome to Book Store!</h3>
       <div id="clock" class="fw-semibold fs-5 mb-3"></div>
-		
+	  <br/>
       <c:choose>
 	    <c:when test="${empty sessionScope.userId}">
 	        <p class="text-muted">로그인하지 않으셨습니다. 로그인 후 다양한 기능을 이용할 수 있어요 😊</p>
@@ -69,7 +35,7 @@
    
 	<!-- 베스트셀러 섹션 -->
 	<div class="mt-5">
-	  <h3 class="mb-4 text-center fw-bold">🔥 베스트 셀러</h3>
+	  <h3 class="mb-4 text-center fw-bold">🔥 따끈 따근 신작</h3>
 	  <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
 	    <%@ include file="dbconn.jsp" %>
 	    <%

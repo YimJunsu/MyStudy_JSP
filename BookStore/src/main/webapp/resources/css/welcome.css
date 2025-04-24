@@ -1,0 +1,32 @@
+@charset "UTF-8";
+ body {
+      background-color: #D3D3D3;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .main-hero {
+      background-color: white;
+      padding: 60px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+    }
+
+    h1, h3 {
+      color: #333;
+    }
+
+    .welcome-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+
+    #clock {
+      color: #6366f1;
+    }
+
+    .text-muted, .text-primary {
+      font-size: 16px;
+    }

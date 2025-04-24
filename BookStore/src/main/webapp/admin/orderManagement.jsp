@@ -7,17 +7,17 @@
 String userId = (String) session.getAttribute("userId");
 String role = (String) session.getAttribute("role");
 
-	// 로그인 안 했거나, 권한이 admin이 아니면
-	if (userId == null || role == null || !"admin".equals(role)) {
-	    response.sendRedirect("exceptionNoPage.jsp");
-	    return;
-	}
-    
-    OrderRepository orderRepo = new OrderRepository();
-    // 모든 주문 가져오기 (실제로는 페이징 처리 필요)
-    List<Order> allOrders = orderRepo.getAllOrders();
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+// 로그인 안 했거나, 권한이 admin이 아니면
+if (userId == null || role == null || !"admin".equals(role)) {
+    response.sendRedirect("exceptionNoPage.jsp");
+    return;  // 리다이렉트 후 JSP 처리 종료
+}
+
+OrderRepository orderRepo = new OrderRepository();
+// 모든 주문 가져오기 (실제로는 페이징 처리 필요)
+List<Order> allOrders = orderRepo.getAllOrders();
+
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 %>
 <html>
 <head>
@@ -65,7 +65,7 @@ String role = (String) session.getAttribute("role");
                         </form>
                     </td>
                     <td class="text-center">
-                        <a href="adminOrderDetail.jsp?id=<%= order.getOrderId() %>" class="btn btn-sm btn-info">상세</a>
+                        <a href="/BookStore/orderDetail.jsp?id=<%= order.getOrderId() %>" class="btn btn-sm btn-info">상세</a>
                     </td>
                 </tr>
             <% } %>

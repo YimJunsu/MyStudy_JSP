@@ -3,22 +3,34 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
-    // 관리자 로그인 체크
-    String adminId = (String) session.getAttribute("adminId");
-    if (adminId == null) {
-        response.sendRedirect("adminLogin.jsp");
+    // 로그인된 사용자 정보 가져오기
+    String userId = (String) session.getAttribute("userId");
+    String role = (String) session.getAttribute("role");
+
+    // 관리자 권한 체크: userId가 없거나 role이 admin이 아니면 로그인 페이지로 리다이렉트
+    if (userId == null || role == null || !"admin".equals(role)) {
+        response.sendRedirect("exceptionNoPage.jsp");
         return;
     }
     
+    // 주문 ID와 상태 값을 받아옵니다.
     String orderIdParam = request.getParameter("orderId");
     String status = request.getParameter("status");
     
     if (orderIdParam != null && status != null) {
-        int orderId = Integer.parseInt(orderIdParam);
-        
-        OrderRepository orderRepo = new OrderRepository();
-        orderRepo.updateOrderStatus(orderId, status);
+        try {
+            // 주문 ID를 정수로 변환
+            int orderId = Integer.parseInt(orderIdParam);
+            
+            // 주문 상태 업데이트
+            OrderRepository orderRepo = new OrderRepository();
+            orderRepo.updateOrderStatus(orderId, status);
+        } catch (NumberFormatException e) {
+            // 주문 ID가 올바르지 않으면 예외 처리 (로그 기록 등 추가 가능)
+            e.printStackTrace();
+        }
     }
     
+    // 상태 업데이트 후, 주문 관리 페이지로 리다이렉트
     response.sendRedirect("orderManagement.jsp");
 %>
