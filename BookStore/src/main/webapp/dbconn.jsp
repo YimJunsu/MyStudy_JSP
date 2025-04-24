@@ -3,11 +3,11 @@
 <%
 	Connection conn = null;
 	try{
-	String url="jdbc:mysql://localhost:3306/BookStoreJSP";
-	String user="team1";
-	String password="1234";
+	String url="jdbc:mariadb://localhost:3307/BookStoreJSP";
+	String user="root";
+	String password="070412Thu!";
 	
-	Class.forName("com.mysql.cj.jdbc.Driver");
+	Class.forName("org.mariadb.jdbc.Driver");
 	conn=DriverManager.getConnection(url, user, password);
 	
 	} catch (SQLException ex) {

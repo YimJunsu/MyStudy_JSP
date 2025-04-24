@@ -15,6 +15,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\sourcetree_link\jspstudy\Servers"/>
 			<item value="D:\sourcetree_link\jspstudy\BookStore"/>
 			<item value="D:\sourcetree_link\jspstudy\JSP_Study"/>
 			<item value="C:\Users\junsu\OneDrive\바탕 화면\StudyMyJSP"/>

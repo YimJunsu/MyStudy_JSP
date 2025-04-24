@@ -1,67 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+version="6.0">
 
-    <!-- 관리자 역할 설정 -->
-    <security-role>
-        <role-name>admin</role-name>
-    </security-role>
+<!-- 관리자 역할 설정 -->
+<security-role>
+<role-name>admin</role-name>
+</security-role>
 
-    <!-- 보안 정책 설정 -->
-    <security-constraint>
-        <display-name>BookStore Security</display-name>
-        <web-resource-collection>
-            <web-resource-name>BookStore</web-resource-name>
-            <url-pattern>/addBook.jsp</url-pattern>
-            <url-pattern>/editBook.jsp</url-pattern>
-        </web-resource-collection>
-        
-        <auth-constraint>
-            <role-name>admin</role-name>
-        </auth-constraint>
-    </security-constraint>
+<!-- 보안 정책 설정 -->
+<security-constraint>
+<display-name>BookStore Security</display-name>
+<web-resource-collection>
+<web-resource-name>BookStore</web-resource-name>
+<url-pattern>/addBook.jsp</url-pattern>
+<url-pattern>/editBook.jsp</url-pattern>
+</web-resource-collection>
 
-    <!-- 로그인 설정 -->
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <form-login-config>
-            <form-login-page>/member/login.jsp</form-login-page>
-            <form-error-page>/member/login_failed.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
+<auth-constraint>
+<role-name>admin</role-name>
+</auth-constraint>
+</security-constraint>
 
-    <!-- 세션 유지 시간 설정 -->
-    <session-config>
-        <session-timeout>30</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
-    </session-config>
-    <!-- 오류 페이<Context>
-	    <Manager pathname="" />
-	</Context>지 설정 -->
-    <error-page>
-        <error-code>404</error-code>
-        <location>/exceptionNoPage.jsp</location>
-    </error-page>
+<!-- 로그인 설정 -->
+<login-config>
+<auth-method>FORM</auth-method>
+<form-login-config>
+<form-login-page>/member/login.jsp</form-login-page>
+<form-error-page>/member/login_failed.jsp</form-error-page>
+</form-login-config>
+</login-config>
 
-    <!-- 로그 필터 설정 -->
-    <filter>
-        <filter-name>LogFilter</filter-name>
-        <filter-class>filter.LogFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LogFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+<!-- 세션 유지 시간 설정 -->
+<session-config>
+<session-timeout>30</session-timeout> <!-- 0으로 설정하면 즉시 만료 -->
+</session-config>
 
-    <filter>
-        <filter-name>LogFileFilter</filter-name>
-        <filter-class>filter.LogFileFilter</filter-class>
-        <init-param>
-            <param-name>filename</param-name>
-            <param-value>D:/Program files/logs/bookstore.log</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>LogFileFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+<!-- 오류 페이지 설정 -->
+<error-page>
+<error-code>404</error-code>
+<location>/exceptionNoPage.jsp</location>
+</error-page>
+
+<!-- 로그 필터 설정 -->
+<filter>
+<filter-name>LogFilter</filter-name>
+<filter-class>filter.LogFilter</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>LogFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<filter>
+<filter-name>LogFileFilter</filter-name>
+<filter-class>filter.LogFileFilter</filter-class>
+<init-param>
+<param-name>filename</param-name>
+<param-value>D:/Program files/logs/bookstore.log</param-value>
+</init-param>
+</filter>
+<filter-mapping>
+<filter-name>LogFileFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<!-- 파일 업로드를 위한 서블릿 설정 (수정) -->
+<servlet>
+<servlet-name>AddBookServlet</servlet-name>
+<jsp-file>/admin/processAddBook.jsp</jsp-file>
+<multipart-config>
+<max-file-size>5242880</max-file-size> <!-- 5MB -->
+<max-request-size>20971520</max-request-size> <!-- 20MB -->
+<file-size-threshold>0</file-size-threshold> <!-- 임시 파일 없이 즉시 처리 -->
+</multipart-config>
+</servlet>
+<servlet-mapping>
+<servlet-name>AddBookServlet</servlet-name>
+<url-pattern>/admin/processAddBook.jsp</url-pattern>
+</servlet-mapping>
+
+<!-- 파일 수정을 위한 서블릿 설정 (수정) -->
+<servlet>
+<servlet-name>EditBookServlet</servlet-name>
+<jsp-file>/admin/processUpdateBook.jsp</jsp-file>
+<multipart-config>
+<max-file-size>5242880</max-file-size> <!-- 5MB -->
+<max-request-size>20971520</max-request-size> <!-- 20MB -->
+<file-size-threshold>0</file-size-threshold> <!-- 임시 파일 없이 즉시 처리 -->
+</multipart-config>
+</servlet>
+<servlet-mapping>
+<servlet-name>EditBookServlet</servlet-name>
+<url-pattern>/admin/processUpdateBook.jsp</url-pattern>
+</servlet-mapping>
 
 </web-app>

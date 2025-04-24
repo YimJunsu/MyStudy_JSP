@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.time.LocalDateTime, java.time.format.DateTimeFormatter" %>
+<%@ page import="jakarta.servlet.http.HttpServletRequest" %>
+<%@ page import="jakarta.servlet.http.Cookie" %>
 <%@ page import="dto.Member" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -42,7 +44,6 @@
 	      PreparedStatement ps = null;
 	      ResultSet rs = null;
 	      try {
-	          // 현재는 최신 등록 기준으로 3개만 가져오기
 	          String sql = "SELECT * FROM book ORDER BY book_id DESC LIMIT 3";
 	          ps = conn.prepareStatement(sql);
 	          rs = ps.executeQuery();
