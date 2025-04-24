@@ -19,8 +19,8 @@
     
     int orderId = Integer.parseInt(orderIdParam);
     
-    OrderRepository orderRepo = new OrderRepository();
-    BookRepository bookRepo = new BookRepository();
+    OrderRepository orderRepo = OrderRepository.getInstance();
+    BookRepository bookRepo = BookRepository.getInstance();
     
     // 주문 정보 조회
     Order order = orderRepo.getOrderById(orderId);

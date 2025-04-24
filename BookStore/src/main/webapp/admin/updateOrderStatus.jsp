@@ -12,18 +12,14 @@
         response.sendRedirect("exceptionNoPage.jsp");
         return;
     }
-    
-    // 주문 ID와 상태 값을 받아옵니다.
     String orderIdParam = request.getParameter("orderId");
     String status = request.getParameter("status");
     
     if (orderIdParam != null && status != null) {
         try {
-            // 주문 ID를 정수로 변환
             int orderId = Integer.parseInt(orderIdParam);
-            
             // 주문 상태 업데이트
-            OrderRepository orderRepo = new OrderRepository();
+            OrderRepository orderRepo = OrderRepository.getInstance();
             orderRepo.updateOrderStatus(orderId, status);
         } catch (NumberFormatException e) {
             // 주문 ID가 올바르지 않으면 예외 처리 (로그 기록 등 추가 가능)

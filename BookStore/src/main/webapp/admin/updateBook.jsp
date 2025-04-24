@@ -26,16 +26,15 @@
     </div>
     <%@ include file="/dbconn.jsp" %>
     <%
-        String bookId = request.getParameter("id");  // 'id' 파라미터를 받아옵니다
+        String bookId = request.getParameter("id");
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        // 'b_id'에 해당하는 값을 받아서 쿼리에서 사용
         String sql = "SELECT * FROM book WHERE b_id=?";
         ps = conn.prepareStatement(sql);
-        ps.setString(1, bookId);  // bookId 값을 첫 번째 파라미터로 설정
+        ps.setString(1, bookId);
 
-        rs = ps.executeQuery(); // 쿼리 실행
+        rs = ps.executeQuery();
         
         if (rs.next()) {
     %>

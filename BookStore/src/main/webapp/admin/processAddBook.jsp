@@ -5,7 +5,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.io.File" %>
-<%@ include file="dbconn.jsp" %>
+<%@ include file="/dbconn.jsp" %>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -102,7 +102,7 @@ try {
 
     if (result > 0) {
         System.out.println("도서 등록 성공: " + bookId);
-        response.sendRedirect("books.jsp");
+        response.sendRedirect("/BookStore/books.jsp");
     } else {
         System.out.println("도서 등록 실패: 영향받은 행이 없음");
         out.println("<script>alert('도서 등록 실패'); history.back();</script>");

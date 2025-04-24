@@ -7,6 +7,7 @@ import dto.Book;
 import filter.DBConnection;
 
 public class BookRepository {
+
     // 싱글톤 인스턴스
     private static BookRepository instance = new BookRepository();
 

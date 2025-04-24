@@ -6,6 +6,17 @@ import java.sql.*;
 
 public class MemberRepository {
 
+    // 싱글톤 인스턴스
+    private static MemberRepository instance = new MemberRepository();
+
+    // 외부에서 인스턴스 가져오기
+    public static MemberRepository getInstance() {
+        return instance;
+    }
+
+    // 생성자
+    private MemberRepository() {}
+
     public void save(Member member) throws Exception {
         String sql = "INSERT INTO member (id, password, name, email, zipcode, address1, address2, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {

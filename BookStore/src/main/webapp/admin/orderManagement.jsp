@@ -13,8 +13,10 @@ if (userId == null || role == null || !"admin".equals(role)) {
     return;  // 리다이렉트 후 JSP 처리 종료
 }
 
-OrderRepository orderRepo = new OrderRepository();
-// 모든 주문 가져오기 (실제로는 페이징 처리 필요)
+// 싱글톤 가져오기
+OrderRepository orderRepo = OrderRepository.getInstance();
+
+// 모든 주문 가져오기 
 List<Order> allOrders = orderRepo.getAllOrders();
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -28,7 +30,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 <div class="container py-4">
     <div class="p-4 mb-4 bg-body-tertiary rounded-3">
         <h1 class="display-5 fw-bold">주문 관리</h1>
-        <p class="fs-5">* 모든 주문을 관리할 수 있습니다.</p>
+        <p class="fs-5">전체 주문 목록</p>
     </div>
     
     <div class="table-responsive">

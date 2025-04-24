@@ -35,7 +35,7 @@
    
 	<!-- 베스트셀러 섹션 -->
 	<div class="mt-5">
-	  <h3 class="mb-4 text-center fw-bold">🔥 따끈 따근 신작</h3>
+	  <h3 class="mb-4 text-center fw-bold">🔥따끈 따근 신작🔥</h3>
 	  <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
 	    <%@ include file="dbconn.jsp" %>
 	    <%

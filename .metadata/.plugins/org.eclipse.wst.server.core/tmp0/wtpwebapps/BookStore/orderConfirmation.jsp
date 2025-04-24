@@ -33,7 +33,7 @@
     }
     
     // 회원 정보 가져오기
-    MemberRepository memberRepo = new MemberRepository();
+    MemberRepository memberRepo = MemberRepository.getInstance();
     Member member = memberRepo.findById(userId);
     
     // 총 금액 계산
@@ -52,24 +52,19 @@
     
     function requestPay() {
         const IMP = window.IMP;
-        IMP.init("imp18501418"); // 테스트 모드 가맹점 식별코드 (실제 발급받은 테스트 코드로 변경 필요)
+        IMP.init("imp18501418"); // 실제 MID로 변경
         
         IMP.request_pay({
-            pg: "nice", // 테스트 모드 제공 PG사 중 하나 
+            pg: "nice.iamport00m",  // 나이스페이먼츠로 설정
             pay_method: "card",
-            merchant_uid: "ORD_" + new Date().getTime(),
+            merchant_uid: "ORDER_" + new Date().getTime(),
             name: "책 주문 (<%= cartList.size() %>종)",
-            amount: 100, // 테스트 모드에서는 실제 금액 대신 100원으로 설정
-            // 실제 서비스 시: amount: <%= totalAmount %>,
+            amount: 100, // 테스트 금액 100원
             buyer_email: "<%= member.getEmail() %>",
             buyer_name: "<%= member.getName() %>",
             buyer_tel: "<%= phone %>",
             buyer_addr: "<%= address1 %> <%= address2 %>",
-            buyer_postcode: "<%= zipcode %>",
-            // 테스트 모드 활성화
-            custom_data: {
-                test_mode: true
-            }
+            buyer_postcode: "<%= zipcode %>"
         }, function(rsp) {
             if (rsp.success) {
                 // 결제 성공 시
@@ -78,9 +73,20 @@
                 document.getElementById("paymentForm").submit();
             } else {
                 // 결제 실패 시
+                console.log(rsp); // 콘솔에 실패 정보 출력
                 alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
             }
         });
+    }
+    
+    // 백업용 모의 결제
+    function processOrder() {
+        const mockImpUid = "mock_payment_" + new Date().getTime();
+        const mockMerchantUid = "mock_order_" + new Date().getTime();
+        
+        document.getElementById("imp_uid").value = mockImpUid;
+        document.getElementById("merchant_uid").value = mockMerchantUid;
+        document.getElementById("paymentForm").submit();
     }
 </script>
 <title>주문 확인</title>
@@ -88,14 +94,14 @@
 <body>
 <div class="container py-4">
     <%@ include file="/menu.jsp" %>
-    
     <div class="p-4 mb-4 bg-body-tertiary rounded-3 text-center">
         <h1 class="display-5 fw-bold">🔍 주문 확인</h1>
         <p class="fs-5">* 주문 내역을 확인하고 결제를 진행해주세요.</p>
     </div>
     
     <div class="alert alert-info">
-        <strong>안내:</strong> 포트폴리오 시연용으로 테스트 결제가 진행됩니다. 실제 결제는 이루어지지 않으니 안심하고 테스트하세요.
+        <strong>안내:</strong> 포트원 테스트 결제가 진행됩니다. 실제 결제는 이루어지지 않으니 안심하고 테스트하세요.
+        <br>테스트 카드 번호: 4242-4242-4242-4242 (유효기간: 미래 날짜, CVC: 아무 3자리 숫자)
     </div>
     
     <div class="row">
@@ -176,7 +182,11 @@
             
             <div class="d-flex justify-content-between mt-4">
                 <button type="button" class="btn btn-secondary" onclick="cancelOrder()">주문 취소</button>
-                <button type="button" class="btn btn-primary" onclick="requestPay()">테스트 결제하기</button>
+                <div>
+                    <!-- 두 가지 버튼 제공 -->
+                    <button type="button" class="btn btn-outline-primary me-2" onclick="processOrder()">모의 결제로 진행</button>
+                    <button type="button" class="btn btn-primary" onclick="requestPay()">포트원 테스트 결제</button>
+                </div>
             </div>
             
             <!-- 결제 성공 시 전송될 폼 -->

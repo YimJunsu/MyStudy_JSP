@@ -10,6 +10,17 @@ import java.util.ArrayList;
 
 public class OrderRepository {
 
+    // 싱글톤 인스턴스
+    private static OrderRepository instance = new OrderRepository();
+
+    // 외부에서 인스턴스 가져오기
+    public static OrderRepository getInstance() {
+        return instance;
+    }
+
+    // 생성자
+    private OrderRepository() {}
+
     // 주문 생성 및 주문 ID 반환
     public int createOrder(Order order) {
         int orderId = 0;
@@ -237,7 +248,8 @@ public class OrderRepository {
         }
         return success;
     }
- // 모든 주문 목록 조회
+
+    // 모든 주문 목록 조회
     public ArrayList<Order> getAllOrders() {
         ArrayList<Order> orders = new ArrayList<>();
         String sql = "SELECT * FROM orders ORDER BY order_date DESC";
@@ -262,5 +274,4 @@ public class OrderRepository {
 
         return orders;
     }
-
 }

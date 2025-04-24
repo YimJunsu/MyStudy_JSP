@@ -25,8 +25,8 @@
     }
     
     // 주문 생성
-    OrderRepository orderRepo = new OrderRepository();
-    BookRepository bookRepo = new BookRepository();
+    OrderRepository orderRepo = OrderRepository.getInstance();
+    BookRepository bookRepo = BookRepository.getInstance();
     
     // 1. orders 테이블에 주문 기록 생성
     Order order = new Order(userId, totalAmount);

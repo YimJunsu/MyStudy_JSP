@@ -34,15 +34,15 @@
                         </tr>
                         <tr>
                             <th class="bg-light">입금 은행</th>
-                            <td>우리은행</td>
+                            <td>신한 은행</td>
                         </tr>
                         <tr>
                             <th class="bg-light">계좌번호</th>
-                            <td>1002-123-456789</td>
+                            <td>110-525-816390</td>
                         </tr>
                         <tr>
                             <th class="bg-light">예금주</th>
-                            <td>주식회사 북스토어</td>
+                            <td>지식의 방</td>
                         </tr>
                     </table>
                     

@@ -21,7 +21,7 @@
     }
     
     // 회원 정보 가져오기
-	MemberRepository memberRepo = new MemberRepository();
+	MemberRepository memberRepo = MemberRepository.getInstance();
 	Member member = memberRepo.findById(userId);
 
 %>

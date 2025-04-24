@@ -32,7 +32,7 @@
         <div class="text-end">
             <a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
         </div>
-        <form name="newBook" method="post" enctype="multipart/form-data" action="/BookStore/processAddBook.jsp" onsubmit="return CheckAddBook();">
+        <form name="newBook" method="post" enctype="multipart/form-data" action="/BookStore/admin/processAddBook.jsp" onsubmit="return CheckAddBook();">
             <div class="mb-3 row">
                 <label class="col-sm-2"><fmt:message key="bookId"/></label>
                 <div class="col-sm-3">

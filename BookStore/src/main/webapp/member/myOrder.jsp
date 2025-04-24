@@ -11,7 +11,7 @@
         return;
     }
     
-    OrderRepository orderRepo = new OrderRepository();
+    OrderRepository orderRepo = OrderRepository.getInstance();
     ArrayList<Order> orderList = orderRepo.getOrdersByMemberId(userId);
     
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");

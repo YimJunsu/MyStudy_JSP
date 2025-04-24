@@ -13,7 +13,7 @@
     member.setAddress2(request.getParameter("address2"));
 
     try {
-        MemberRepository repo = new MemberRepository();
+        MemberRepository repo = MemberRepository.getInstance();
         repo.save(member);
         response.sendRedirect("login.jsp");
     } catch (Exception e) {

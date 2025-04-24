@@ -15,7 +15,6 @@
         var expiryDate = document.getElementById("expiryDate").value;
         var cvv = document.getElementById("cvv").value;
         
-        // 간단한 유효성 검사
         if (cardNumber.length < 16) {
             alert("올바른 카드번호를 입력하세요.");
             return false;
@@ -29,7 +28,6 @@
             return false;
         }
         
-        // 랜덤하게 결제 성공/실패 시뮬레이션 (90% 성공률)
         var randomSuccess = Math.random() < 0.9;
         if (randomSuccess) {
             document.getElementById("payment_status").value = "success";

@@ -6,11 +6,11 @@
     String password = request.getParameter("password");
 
     try {
-        MemberRepository repo = new MemberRepository();
+        MemberRepository repo = MemberRepository.getInstance();
         Member loginUser = repo.findByIdAndPassword(id, password);
         System.out.println("Debug: 로그인 결과 = " + loginUser);
         if (loginUser != null) {
-            session.setAttribute("userId", loginUser.getId());  // ✅ 수정됨
+            session.setAttribute("userId", loginUser.getId());
             session.setAttribute("role", loginUser.getRole());
             response.sendRedirect("../welcome.jsp");
         } else {
