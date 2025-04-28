@@ -15,9 +15,10 @@
 -- **Server**: Apache Tomcat 10.0  
 -- **Java Version**: Java 21  
 -- **Backend**: Java (Servlet), JSP  
--- **Frontend**: JSP, HTML/CSS, JavaScript, Bootstrap
+-- **Frontend**: JSP, HTML/CSS, JavaScript, Bootstrap<br>
 -- **🔹 Payment API**: PortOne (아임포트)
 -- **Database**: MariaDB  
+---
 ![image](https://github.com/user-attachments/assets/a456d5e9-649c-4a5a-a1f8-0a5be935c0cb)
 
 ---
