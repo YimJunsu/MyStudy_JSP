@@ -1,13 +1,41 @@
 # MyStudy_JSP
 
-## BookStore with JSP/Servelt
-### Server Domain : http://junsu0519.cafe24.com/
-- Server : Tomcat 10.0 ver
-- Dev Lan : java 21
-- DataBases : MariaDB
-- Front : JSP, css, JavaScript, BootStrap
+## 📚 BookStore with JSP/Servlet
+### 🌐 Server Domain  
+[http://junsu0519.cafe24.com/](http://junsu0519.cafe24.com/)
 
+---
 
+### 📝 Project Description
+
+**지식의 방**은 JSP/Servlet 기반으로 구현된 온라인 도서 쇼핑몰 웹 애플리케이션 제작.   
+포트원(아임포트) API를 통해 실제 결제 흐름까지 적용.  
+
+---
+
+### ⚙️ Tech Stack
+- **Server**: Apache Tomcat 10.0  
+- **Java Version**: Java 21  
+- **Database**: MariaDB  
+- **Backend**: Java (Servlet), JSP  
+- **Frontend**: JSP, HTML/CSS, JavaScript, Bootstrap
+- **🔹 Payment API**: PortOne (아임포트)
+
+---
+
+- ### 🛠️ Main Features
+
+- 회원가입 및 로그인 (세션 기반 인증)  
+- 도서 목록 조회 및 상세 페이지  
+- 장바구니 추가 및 삭제 기능  
+- 결제 기능 (포트원 API 연동)  
+- 관리자 페이지 (도서 등록/삭제 등, 배송/문의 관리)  
+
+---
+
+- ### 📸 Screenshots 
+
+---
 
 ## JSP Study List
 - Study ( 25.02.19 )
@@ -25,7 +53,7 @@
 -- ch12 - 필터 로그 기록 - web.xml 필터 구성<br>
 -- ch13 - 세션 이용 - 세션 생성, 정보, 삭제 등<br>
 -- ch14 - 쿠키 이용 - 쿠키개요, 생성, 정보, 삭제 등<br>
--- ch15 - db 연결 및 쿼리 삽입<br> - JDBC로 DB 연결 및 DAO(Repository) 문 쿼리문 생성 및 연결
--- ch16 - JSTL 태그 - Core태그, Fomatting태그, Sql태그, Function태그
--- ch17 - MVC 패턴 게시판 예시 - web.xml 서블릿 클래스 등록, MVC -> Controller -> Model -> View
+-- ch15 - db 연결 및 쿼리 삽입<br> - JDBC로 DB 연결 및 DAO(Repository) 문 쿼리문 생성 및 연결<br>
+-- ch16 - JSTL 태그 - Core태그, Fomatting태그, Sql태그, Function태그<br>
+-- ch17 - MVC 패턴 게시판 예시 - web.xml 서블릿 클래스 등록, MVC -> Controller -> Model -> View<br>
   
