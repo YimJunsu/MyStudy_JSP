@@ -1,5 +1,3 @@
-# MyStudy_JSP
-
 ## 📚 BookStore with JSP/Servlet
 ### 🌐 Server Domain  
 [http://junsu0519.cafe24.com/](http://junsu0519.cafe24.com/)
@@ -16,10 +14,11 @@
 ### ⚙️ Tech Stack
 - **Server**: Apache Tomcat 10.0  
 - **Java Version**: Java 21  
-- **Database**: MariaDB  
 - **Backend**: Java (Servlet), JSP  
 - **Frontend**: JSP, HTML/CSS, JavaScript, Bootstrap
 - **🔹 Payment API**: PortOne (아임포트)
+- **Database**: MariaDB  
+![image](https://github.com/user-attachments/assets/a456d5e9-649c-4a5a-a1f8-0a5be935c0cb)
 
 ---
 
