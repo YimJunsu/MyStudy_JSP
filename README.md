@@ -32,7 +32,12 @@
 
 ---
 
-- ### 📸 Screenshots 
+- ### 📸 Main Screenshots
+- **Order Process**
+![image](https://github.com/user-attachments/assets/567d341c-31d7-4da5-962f-2075137543a9)
+---
+- **Order Manage**
+![어드민 주문관리](https://github.com/user-attachments/assets/02f2823a-5656-41fa-8d4b-535c8e264ead)
 
 ---
 
