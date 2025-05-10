@@ -1,6 +1,6 @@
 ## 📚 BookStore with JSP/Servlet
 ### 🌐 Server Domain  
-[www.jisikroom.shop/](www.jisikroom.shop/)
+[[www.jisikroom.shop/](http://www.jisikroom.shop/)]
 
 ---
 
