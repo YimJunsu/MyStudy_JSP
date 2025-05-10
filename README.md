@@ -1,6 +1,6 @@
 ## 📚 BookStore with JSP/Servlet
 ### 🌐 Server Domain  
-[http://junsu0519.cafe24.com/](http://junsu0519.cafe24.com/)
+[www.jisikroom.shop/](www.jisikroom.shop/)
 
 ---
 
